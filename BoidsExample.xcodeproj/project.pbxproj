@@ -19,6 +19,7 @@
 		22AF6C351DAC54E2000B350D /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C2F1DAC54E2000B350D /* tinyxmlerror.cpp */; };
 		22AF6C361DAC54E2000B350D /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C301DAC54E2000B350D /* tinyxmlparser.cpp */; };
 		22AF6C371DAC54E2000B350D /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C321DAC54E2000B350D /* ofxXmlSettings.cpp */; };
+		22AF6C3B1DAC5945000B350D /* Boid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C391DAC5945000B350D /* Boid.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -77,6 +78,8 @@
 		22AF6C301DAC54E2000B350D /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		22AF6C321DAC54E2000B350D /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		22AF6C331DAC54E2000B350D /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		22AF6C391DAC5945000B350D /* Boid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid.cpp; sourceTree = "<group>"; };
+		22AF6C3A1DAC5945000B350D /* Boid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Boid.hpp; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* BoidsExample Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BoidsExample Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -229,6 +232,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				22AF6C3A1DAC5945000B350D /* Boid.hpp */,
+				22AF6C391DAC5945000B350D /* Boid.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -338,6 +343,7 @@
 				22AF6C371DAC54E2000B350D /* ofxXmlSettings.cpp in Sources */,
 				22AF6C341DAC54E2000B350D /* tinyxml.cpp in Sources */,
 				22AF6C1F1DAC54A0000B350D /* ButtonManager.cpp in Sources */,
+				22AF6C3B1DAC5945000B350D /* Boid.cpp in Sources */,
 				22AF6C361DAC54E2000B350D /* tinyxmlparser.cpp in Sources */,
 				22AF6C231DAC54A0000B350D /* SelectionItem.cpp in Sources */,
 				22AF6C221DAC54A0000B350D /* ListItem.cpp in Sources */,
