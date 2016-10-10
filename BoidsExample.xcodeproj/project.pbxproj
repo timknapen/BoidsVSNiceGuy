@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22AF6C1F1DAC54A0000B350D /* ButtonManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C081DAC54A0000B350D /* ButtonManager.cpp */; };
+		22AF6C201DAC54A0000B350D /* ButtonPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C0B1DAC54A0000B350D /* ButtonPanel.cpp */; };
+		22AF6C211DAC54A0000B350D /* FlashItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C0D1DAC54A0000B350D /* FlashItem.cpp */; };
+		22AF6C221DAC54A0000B350D /* ListItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C0F1DAC54A0000B350D /* ListItem.cpp */; };
+		22AF6C231DAC54A0000B350D /* SelectionItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C111DAC54A0000B350D /* SelectionItem.cpp */; };
+		22AF6C241DAC54A0000B350D /* SliderItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C131DAC54A0000B350D /* SliderItem.cpp */; };
+		22AF6C251DAC54A0000B350D /* ToggleItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C151DAC54A0000B350D /* ToggleItem.cpp */; };
+		22AF6C261DAC54A0000B350D /* SimpleButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C1A1DAC54A0000B350D /* SimpleButton.cpp */; };
+		22AF6C341DAC54E2000B350D /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C2D1DAC54E2000B350D /* tinyxml.cpp */; };
+		22AF6C351DAC54E2000B350D /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C2F1DAC54E2000B350D /* tinyxmlerror.cpp */; };
+		22AF6C361DAC54E2000B350D /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C301DAC54E2000B350D /* tinyxmlparser.cpp */; };
+		22AF6C371DAC54E2000B350D /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6C321DAC54E2000B350D /* ofxXmlSettings.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -42,6 +54,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22AF6C081DAC54A0000B350D /* ButtonManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonManager.cpp; sourceTree = "<group>"; };
+		22AF6C091DAC54A0000B350D /* ButtonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonManager.h; sourceTree = "<group>"; };
+		22AF6C0B1DAC54A0000B350D /* ButtonPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ButtonPanel.cpp; sourceTree = "<group>"; };
+		22AF6C0C1DAC54A0000B350D /* ButtonPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonPanel.h; sourceTree = "<group>"; };
+		22AF6C0D1DAC54A0000B350D /* FlashItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlashItem.cpp; sourceTree = "<group>"; };
+		22AF6C0E1DAC54A0000B350D /* FlashItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashItem.h; sourceTree = "<group>"; };
+		22AF6C0F1DAC54A0000B350D /* ListItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListItem.cpp; sourceTree = "<group>"; };
+		22AF6C101DAC54A0000B350D /* ListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListItem.h; sourceTree = "<group>"; };
+		22AF6C111DAC54A0000B350D /* SelectionItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SelectionItem.cpp; sourceTree = "<group>"; };
+		22AF6C121DAC54A0000B350D /* SelectionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionItem.h; sourceTree = "<group>"; };
+		22AF6C131DAC54A0000B350D /* SliderItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SliderItem.cpp; sourceTree = "<group>"; };
+		22AF6C141DAC54A0000B350D /* SliderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderItem.h; sourceTree = "<group>"; };
+		22AF6C151DAC54A0000B350D /* ToggleItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToggleItem.cpp; sourceTree = "<group>"; };
+		22AF6C161DAC54A0000B350D /* ToggleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleItem.h; sourceTree = "<group>"; };
+		22AF6C191DAC54A0000B350D /* ofxButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxButtons.h; sourceTree = "<group>"; };
+		22AF6C1A1DAC54A0000B350D /* SimpleButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleButton.cpp; sourceTree = "<group>"; };
+		22AF6C1B1DAC54A0000B350D /* SimpleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleButton.h; sourceTree = "<group>"; };
+		22AF6C2D1DAC54E2000B350D /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		22AF6C2E1DAC54E2000B350D /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		22AF6C2F1DAC54E2000B350D /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		22AF6C301DAC54E2000B350D /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		22AF6C321DAC54E2000B350D /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		22AF6C331DAC54E2000B350D /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* BoidsExample Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BoidsExample Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -64,6 +99,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22AF6BF11DAC54A0000B350D /* ofxButtons */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C071DAC54A0000B350D /* src */,
+			);
+			name = ofxButtons;
+			path = ../../../addons/ofxButtons;
+			sourceTree = "<group>";
+		};
+		22AF6C071DAC54A0000B350D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C081DAC54A0000B350D /* ButtonManager.cpp */,
+				22AF6C091DAC54A0000B350D /* ButtonManager.h */,
+				22AF6C0A1DAC54A0000B350D /* ButtonPanel */,
+				22AF6C171DAC54A0000B350D /* Buttons */,
+				22AF6C181DAC54A0000B350D /* Message */,
+				22AF6C191DAC54A0000B350D /* ofxButtons.h */,
+				22AF6C1A1DAC54A0000B350D /* SimpleButton.cpp */,
+				22AF6C1B1DAC54A0000B350D /* SimpleButton.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		22AF6C0A1DAC54A0000B350D /* ButtonPanel */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C0B1DAC54A0000B350D /* ButtonPanel.cpp */,
+				22AF6C0C1DAC54A0000B350D /* ButtonPanel.h */,
+				22AF6C0D1DAC54A0000B350D /* FlashItem.cpp */,
+				22AF6C0E1DAC54A0000B350D /* FlashItem.h */,
+				22AF6C0F1DAC54A0000B350D /* ListItem.cpp */,
+				22AF6C101DAC54A0000B350D /* ListItem.h */,
+				22AF6C111DAC54A0000B350D /* SelectionItem.cpp */,
+				22AF6C121DAC54A0000B350D /* SelectionItem.h */,
+				22AF6C131DAC54A0000B350D /* SliderItem.cpp */,
+				22AF6C141DAC54A0000B350D /* SliderItem.h */,
+				22AF6C151DAC54A0000B350D /* ToggleItem.cpp */,
+				22AF6C161DAC54A0000B350D /* ToggleItem.h */,
+			);
+			path = ButtonPanel;
+			sourceTree = "<group>";
+		};
+		22AF6C171DAC54A0000B350D /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		22AF6C181DAC54A0000B350D /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		22AF6C2B1DAC54E2000B350D /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C2C1DAC54E2000B350D /* libs */,
+				22AF6C311DAC54E2000B350D /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		22AF6C2C1DAC54E2000B350D /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C2D1DAC54E2000B350D /* tinyxml.cpp */,
+				22AF6C2E1DAC54E2000B350D /* tinyxml.h */,
+				22AF6C2F1DAC54E2000B350D /* tinyxmlerror.cpp */,
+				22AF6C301DAC54E2000B350D /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		22AF6C311DAC54E2000B350D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				22AF6C321DAC54E2000B350D /* ofxXmlSettings.cpp */,
+				22AF6C331DAC54E2000B350D /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		6948EE371B920CB800B5AC1A /* local_addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +196,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				22AF6C2B1DAC54E2000B350D /* ofxXmlSettings */,
+				22AF6BF11DAC54A0000B350D /* ofxButtons */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -103,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -205,7 +329,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AF6C351DAC54E2000B350D /* tinyxmlerror.cpp in Sources */,
+				22AF6C251DAC54A0000B350D /* ToggleItem.cpp in Sources */,
+				22AF6C261DAC54A0000B350D /* SimpleButton.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				22AF6C211DAC54A0000B350D /* FlashItem.cpp in Sources */,
+				22AF6C241DAC54A0000B350D /* SliderItem.cpp in Sources */,
+				22AF6C371DAC54E2000B350D /* ofxXmlSettings.cpp in Sources */,
+				22AF6C341DAC54E2000B350D /* tinyxml.cpp in Sources */,
+				22AF6C1F1DAC54A0000B350D /* ButtonManager.cpp in Sources */,
+				22AF6C361DAC54E2000B350D /* tinyxmlparser.cpp in Sources */,
+				22AF6C231DAC54A0000B350D /* SelectionItem.cpp in Sources */,
+				22AF6C221DAC54A0000B350D /* ListItem.cpp in Sources */,
+				22AF6C201DAC54A0000B350D /* ButtonPanel.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
