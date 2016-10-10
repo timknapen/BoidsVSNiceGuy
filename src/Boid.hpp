@@ -16,14 +16,17 @@ public:// All attributes and functions here can be called by other classes
 	Boid();
 	Boid(float x, float y, float dirx, float diry); // Another constructor!
 	
-	void draw(); // draw the Boid to screen
+	void draw();				// draw the Boid to screen
+	void update(float drag);	// update position, speed, etc.
+	void keepInBounds(float minX, float minY, float maxX, float maxY);
 	
-	ofPoint pos; // my position vector
-	ofPoint vel; // my velocity vector
-	ofPoint acc; // my acceleration vector ( F = m * a )
+	ofPoint pos;	// my position vector
+	ofPoint vel;	// my velocity vector
+	ofPoint acc;	// my acceleration vector ( F = m * a )
 	
-	float speed;	
+	float maxSpeed;
 	float mass;
+	
 	
 private:
 	// all attributes and functions here can only be called by the instance/class itself
