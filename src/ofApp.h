@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxButtons.h"
+#include "Boid.hpp"
 
 class ofApp : public ofBaseApp{
 	public:
