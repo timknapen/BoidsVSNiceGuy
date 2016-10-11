@@ -41,4 +41,9 @@ public:
 	ButtonManager buttons;
 	float zoneRadius, lowThresh, highThresh;
 	
+	// the mouse
+	bool	bMouseDown;
+	ofPoint	mousePos;
+	float	mouseRadius;
+	float	mouseForce;
 };

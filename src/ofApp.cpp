@@ -21,6 +21,11 @@ void ofApp::setup(){
 	lowThresh =		0.5f;
 	highThresh =	0.95f;
 	
+	// setup mouse interaction
+	bMouseDown = false;
+	mouseRadius = 50;
+	mouseForce	=	1;
+	
 	// setup buttons
 	buttons.setup();
 	buttons.addSliderItem("Drag", 0.75, 0.99, drag);
@@ -31,6 +36,9 @@ void ofApp::setup(){
 	buttons.addSliderItem("Radius", 10, 300, zoneRadius);
 	buttons.addSliderItem("low threshold", 0.1, 1, lowThresh);
 	buttons.addSliderItem("high threshold", 0.1, 1, highThresh);
+	buttons.addListItem("Mouse");
+	buttons.addSliderItem("Radius", 1, 300, mouseRadius);
+	buttons.addSliderItem("Force", 0.01, 2, mouseForce);
 
 }
 
@@ -45,6 +53,16 @@ void ofApp::update(){
 void ofApp::draw(){
 	drawBoids();
 	
+	if(bMouseDown){
+		// draw a circle around the mouse if it's down
+		ofNoFill();
+		ofSetColor(255, 0, 0);
+		ofPushMatrix();
+		ofTranslate(mousePos);
+		ofDrawEllipse(0, 0, 2*mouseRadius, 2*mouseRadius);
+		ofPopMatrix();
+	}
+	
 	if(buttons.visible){
 		ofSetColor(0);
 		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
@@ -54,7 +72,7 @@ void ofApp::draw(){
 #pragma mark - BOIDS
 //--------------------------------------------------------------
 void ofApp::createBoids(){
-	int numBoids = 200;
+	int numBoids = 500;
 	for(int i = 0; i < numBoids; i++){
 		Boid b;
 		boids.push_back(b);
@@ -94,11 +112,13 @@ void ofApp::updateBoids(){
 //--------------------------------------------------------------
 void ofApp::flockBoids(){
 	
+	ofPoint dir;
+	float dist;
+	
 	for(int i = 0; i <boids.size();i++){
 		for (int j = i+1; j < boids.size(); j++) {
-			ofPoint dir = boids[j].pos - boids[i].pos;
-			float dist = dir.length();
-			
+			dir = boids[j].pos - boids[i].pos;
+			dist = dir.length();
 			
 			if( dist <= zoneRadius ) {	// SEPARATION
 				float percent = dist/zoneRadius;
@@ -123,6 +143,16 @@ void ofApp::flockBoids(){
 					boids[j].acc -= dir;
 				}
 			}
+			
+			// avoid mouse if necessary
+			if(bMouseDown){
+				dir = boids[i].pos - mousePos;
+				dist = dir.length();
+				if(dist < mouseRadius){
+					boids[i].acc += dir.normalize() * (mouseRadius - dist)/mouseRadius * mouseForce;
+				}
+			}
+			
 		}
 	}
 	
@@ -149,22 +179,25 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y){
-
+	mousePos.set(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+	mousePos.set(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+	bMouseDown = true;
+	mousePos.set(x, y);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+	bMouseDown = false;
+	mousePos.set(x, y);
 }
 
 //--------------------------------------------------------------
