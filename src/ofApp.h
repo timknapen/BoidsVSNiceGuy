@@ -40,4 +40,5 @@ public:
 	// GUI!
 	ButtonManager buttons;
 	float zoneRadius, lowThresh, highThresh;
+	
 };

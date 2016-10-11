@@ -41,17 +41,20 @@ void ofApp::update(){
 }
 
 #pragma mark - DRAW
-
 //--------------------------------------------------------------
 void ofApp::draw(){
 	drawBoids();
+	
+	if(buttons.visible){
+		ofSetColor(255, 255, 255);
+		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
+	}
 }
 
 #pragma mark - BOIDS
-
 //--------------------------------------------------------------
 void ofApp::createBoids(){
-	int numBoids = 50;
+	int numBoids = 500;
 	for(int i = 0; i < numBoids; i++){
 		Boid b;
 		boids.push_back(b);
