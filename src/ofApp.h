@@ -36,4 +36,8 @@ public:
 	void drawBoids();		// draw all boids
 	void updateBoids();		// update the boids positions!
 	void flockBoids();		// do flocking
+	
+	// GUI!
+	ButtonManager buttons;
+	float zoneRadius, lowThresh, highThresh;
 };

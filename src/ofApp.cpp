@@ -15,6 +15,23 @@ void ofApp::setup(){
 	
 	createBoids();
 	randomizeBoids();
+	
+	// setup flocking variables
+	zoneRadius =	100;
+	lowThresh =		0.3f;
+	highThresh =	0.9f;
+	
+	// setup buttons
+	buttons.setup();
+	buttons.addSliderItem("Drag", 0.75, 0.99, drag);
+	buttons.addSliderItem("Attraction", 0.01, 0.99, attraction);
+	buttons.addSliderItem("Allign", 0.01, 0.99, allign);
+	buttons.addSliderItem("Separation", 0.01, 0.99, separation);
+	buttons.addListItem("Flocking");
+	buttons.addSliderItem("Radius", 10, 300, zoneRadius);
+	buttons.addSliderItem("low threshold", 0.1, 1, lowThresh);
+	buttons.addSliderItem("high threshold", 0.1, 1, highThresh);
+
 }
 
 //--------------------------------------------------------------
@@ -71,10 +88,6 @@ void ofApp::updateBoids(){
 
 //--------------------------------------------------------------
 void ofApp::flockBoids(){
-	
-	float zoneRadius =	100;
-	float lowThresh =	0.3f;
-	float highThresh =	0.9f;
 	
 	for(int i = 0; i <boids.size();i++){
 		for (int j = i+1; j < boids.size(); j++) {
