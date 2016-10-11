@@ -40,6 +40,7 @@ void ofApp::setup(){
 	buttons.addSliderItem("Radius", 1, 300, mouseRadius);
 	buttons.addSliderItem("Force", 0.01, 2, mouseForce);
 
+	ofHideCursor();
 }
 
 //--------------------------------------------------------------
@@ -53,15 +54,37 @@ void ofApp::update(){
 void ofApp::draw(){
 	drawBoids();
 	
+	
+	// draw a face around the mouse if it's down
+	ofNoFill();
+	ofPushMatrix();
+	ofTranslate(mousePos);
 	if(bMouseDown){
-		// draw a circle around the mouse if it's down
-		ofNoFill();
 		ofSetColor(255, 0, 0);
-		ofPushMatrix();
-		ofTranslate(mousePos);
-		ofDrawEllipse(0, 0, 2*mouseRadius, 2*mouseRadius);
-		ofPopMatrix();
+	}else{
+		ofSetColor(0, 255, 0);
 	}
+	ofScale( mouseRadius/8, mouseRadius/8);
+	ofDrawLine(0, 0, 0, -4); // nose
+	ofDrawLine(-5, -5, -3, -4); // left eye
+	ofDrawLine(5, -5, 3, -4); // right eye
+	ofDrawLine(-3, 2, 3, 2); // mouth
+	
+	ofBeginShape();
+	// going around
+	ofVertex( 0, -8);	// top
+	ofVertex( 6, -6);	// right top
+	ofVertex( 8, 0);	// right
+	ofVertex( 6, 6);	// right bottom
+	ofVertex( 0, 8);	// bottom
+	ofVertex(-6, 6);	// bottom left
+	ofVertex( -8, 0);	// left
+	ofVertex(-6, -6);	// left top
+	ofVertex( 0, -8);	// top
+	
+	ofEndShape();
+	ofPopMatrix();
+	
 	
 	if(buttons.visible){
 		ofSetColor(0);
