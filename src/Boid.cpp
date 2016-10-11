@@ -106,6 +106,14 @@ void Boid::keepInBounds(float minX, float minY, float maxX, float maxY){
 }
 
 //----------------------------------------------------
+void Boid::setPos(float x, float y){
+	pos.set(x,y);
+	for(int i = 0; i < tail.size(); i++){
+		tail[i].set(x,y);
+	}
+}
+
+//----------------------------------------------------
 double Boid::getAngle(){
 	float x = 1;
 	float y = 0;

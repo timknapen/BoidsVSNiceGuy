@@ -64,7 +64,7 @@ void ofApp::createBoids(){
 //--------------------------------------------------------------
 void ofApp::randomizeBoids(){
 	for(int i =0; i< boids.size(); i++){
-		boids[i].pos.set(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
+		boids[i].setPos(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
 		boids[i].vel.set(ofRandom(-1, 1), ofRandom(-1, 1));
 		boids[i].maxSpeed = 10 + ofRandom(10);
 	}
