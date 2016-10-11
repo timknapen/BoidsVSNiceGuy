@@ -30,7 +30,7 @@ public:// All attributes and functions here can be called by other classes
 	
 private:
 	// all attributes and functions here can only be called by the instance/class itself
-	
+	double getAngle();	// get the angle in degrees
 };
 
 #endif /* Boid_hpp */

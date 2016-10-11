@@ -71,8 +71,8 @@ void ofApp::randomizeBoids(){
 
 //--------------------------------------------------------------
 void ofApp::drawBoids(){
-	ofNoFill();
-	ofSetColor(255, 0, 100);
+	ofFill();
+	ofSetColor(255);
 	for(int i =0; i< boids.size(); i++){
 		boids[i].draw();
 	}

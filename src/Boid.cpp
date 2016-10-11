@@ -20,10 +20,18 @@ Boid::Boid(float x, float y, float dirx, float diry){
 
 //----------------------------------------------------
 void Boid::draw(){
+	double rot = getAngle();
 	ofPushMatrix();
 	ofTranslate(pos.x, pos.y, 0);
-	ofDrawEllipse(0, 0, 19,19);
-	ofDrawLine(0, 0, 10*vel.x, 10*vel.y);
+	ofRotateZ( 180.0f *rot / PI);
+	
+	// draw a simple triangle
+	ofBeginShape();
+	ofVertex(0, -2);
+	ofVertex(10, 0);
+	ofVertex(0, 2);
+	ofEndShape();
+	
 	ofPopMatrix();
 }
 
@@ -39,10 +47,11 @@ void Boid::update(float drag){
 		vel *= maxSpeed;
 	}
 	// speed needs to be at least 1
+	/*
 	if( vel.length() < 1){
 		vel.normalize();
 	}
-	
+	*/
 	// drag adds "resistance"
 	vel *= drag;
 
@@ -72,5 +81,12 @@ void Boid::keepInBounds(float minX, float minY, float maxX, float maxY){
 		pos.y = maxY;
 		vel.y = -vel.y;		// bounce on Y axis
 	}
+}
+
+//----------------------------------------------------
+double Boid::getAngle(){
+	float x = 1;
+	float y = 0;
+	return -atan2( vel.x*y - vel.y*x, vel.x*x + vel.y*y );
 }
 
