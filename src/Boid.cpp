@@ -8,31 +8,48 @@
 //----------------------------------------------------
 Boid::Boid(){
 	maxSpeed = 20;
+	
+	// create the points for the tail
+	for(int i = 0; i < 30; i++){
+		tail.push_back(ofPoint());
+	}
 }
 
 //----------------------------------------------------
 Boid::Boid(float x, float y, float dirx, float diry){
-	Boid(); // call the other costructor
+	Boid(); // call the other constructor
 	pos.set(x,y);
 	vel.set(dirx,diry);
-	mass = 5;
+	
+	// set the tail to the position
+	for(int i = 0; i < tail.size(); i++){
+		tail[i].set(pos);
+	}
 }
 
 //----------------------------------------------------
 void Boid::draw(){
 	double rot = getAngle();
+	
+	// draw the tail
+	for(int i = 0; i < tail.size()-1; i++){
+		ofDrawLine(tail[i].x, tail[i].y, tail[i+1].x, tail[i+1].y);
+	}
+	
 	ofPushMatrix();
 	ofTranslate(pos.x, pos.y, 0);
 	ofRotateZ( 180.0f *rot / PI);
 	
 	// draw a simple triangle
 	ofBeginShape();
-	ofVertex(0, -2);
-	ofVertex(10, 0);
-	ofVertex(0, 2);
+	ofVertex(-10, -3);
+	ofVertex(0, 0);
+	ofVertex(-10, 3);
 	ofEndShape();
 	
 	ofPopMatrix();
+	
+	
 }
 
 //----------------------------------------------------
@@ -61,6 +78,11 @@ void Boid::update(float drag){
 	// set acceleration back to 0
 	acc.set( 0, 0 );
 	
+	// update the tail
+	for(int i = 0; i < tail.size()-1; i++){
+		tail[i] = tail[i+1];
+	}
+	tail[tail.size()-1] = pos;
 }
 
 //----------------------------------------------------
@@ -70,7 +92,7 @@ void Boid::keepInBounds(float minX, float minY, float maxX, float maxY){
 		vel.x = -vel.x;		// bounce on X axis
 	}
 	if(pos.x > maxX){
-		pos.x = ofGetWidth();
+		pos.x = maxX;
 		vel.x = -vel.x;		// bounce on X axis
 	}
 	if(pos.y < minY){

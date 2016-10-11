@@ -25,8 +25,8 @@ public:// All attributes and functions here can be called by other classes
 	ofPoint acc;	// my acceleration vector ( F = m * a )
 	
 	float maxSpeed;
-	float mass;
 	
+	vector <ofPoint > tail;
 	
 private:
 	// all attributes and functions here can only be called by the instance/class itself

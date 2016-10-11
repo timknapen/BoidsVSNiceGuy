@@ -3,23 +3,23 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	// set background
-	ofBackground(0, 0, 0);
+	ofBackground(255);
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	
 	// set variables!
 	drag = 0.95f;
-	attraction = 0.9;
-	allign = 0.7;
-	separation = 0.5;
+	attraction = 0.7;
+	allign = 0.45;
+	separation = 0.85;
 	
 	createBoids();
 	randomizeBoids();
 	
 	// setup flocking variables
-	zoneRadius =	100;
-	lowThresh =		0.3f;
-	highThresh =	0.9f;
+	zoneRadius =	60;
+	lowThresh =		0.5f;
+	highThresh =	0.95f;
 	
 	// setup buttons
 	buttons.setup();
@@ -46,7 +46,7 @@ void ofApp::draw(){
 	drawBoids();
 	
 	if(buttons.visible){
-		ofSetColor(255, 255, 255);
+		ofSetColor(0);
 		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
 	}
 }
@@ -66,13 +66,14 @@ void ofApp::randomizeBoids(){
 	for(int i =0; i< boids.size(); i++){
 		boids[i].pos.set(ofRandom(0, ofGetWidth()), ofRandom(0, ofGetHeight()));
 		boids[i].vel.set(ofRandom(-1, 1), ofRandom(-1, 1));
+		boids[i].maxSpeed = 10 + ofRandom(10);
 	}
 }
 
 //--------------------------------------------------------------
 void ofApp::drawBoids(){
-	ofFill();
-	ofSetColor(255);
+	ofNoFill();
+	ofSetColor(0);
 	for(int i =0; i< boids.size(); i++){
 		boids[i].draw();
 	}
@@ -130,6 +131,14 @@ void ofApp::flockBoids(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
+	switch (key) {
+		case ' ':
+			randomizeBoids();
+			break;
+		default:
+			break;
+	}
+	
 }
 
 //--------------------------------------------------------------
