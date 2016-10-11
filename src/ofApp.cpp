@@ -9,7 +9,9 @@ void ofApp::setup(){
 	
 	// set variables!
 	drag = 0.95f;
-	attraction = allign = separation = 0.1;
+	attraction = 0.9;
+	allign = 0.7;
+	separation = 0.5;
 	
 	createBoids();
 	randomizeBoids();
@@ -17,6 +19,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	flockBoids();
 	updateBoids();
 }
 
@@ -68,6 +71,42 @@ void ofApp::updateBoids(){
 
 //--------------------------------------------------------------
 void ofApp::flockBoids(){
+	
+	float zoneRadius =	100;
+	float lowThresh =	0.3f;
+	float highThresh =	0.9f;
+	
+	for(int i = 0; i <boids.size();i++){
+		for (int j = i+1; j < boids.size(); j++) {
+			ofPoint dir = boids[j].pos - boids[i].pos;
+			float dist = dir.length();
+			
+			
+			if( dist <= zoneRadius ) {	// SEPARATION
+				float percent = dist/zoneRadius;
+				if( percent < lowThresh ) { // ... and is within the threshold limits, separate...
+					float F = ( lowThresh/percent - 1.0f ) * 0.01;
+					dir = dir.getNormalized() * F * separation;
+					boids[i].acc -= dir;
+					boids[j].acc += dir;
+				} else if( percent < highThresh ) { // ... else if it is within the higher threshold limits, align...
+					float threshDelta = highThresh - lowThresh;
+					float adjustedPercent = ( percent - lowThresh )/threshDelta;
+					float F = ( 0.5f - cos( adjustedPercent * M_PI * 2.0f ) * 0.5f + 0.5f ) * 0.01;
+					boids[i].acc += boids[j].vel.getNormalized() * F * allign;
+					boids[j].acc += boids[i].vel.getNormalized() * F * allign;
+				}
+				else { // ... else, attract.
+					float threshDelta = 1.0f - highThresh;
+					float adjustedPercent = ( percent - highThresh )/threshDelta;
+					float F = ( 0.5f - cos( adjustedPercent * M_PI * 2.0f ) * 0.5f + 0.5f ) * 0.01;
+					dir = dir.getNormalized() * F * attraction;
+					boids[i].acc += dir;
+					boids[j].acc -= dir;
+				}
+			}
+		}
+	}
 	
 }
 
