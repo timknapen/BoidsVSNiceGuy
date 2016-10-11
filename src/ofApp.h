@@ -22,6 +22,8 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
+	// Nice Guy
+	void drawNiceGuy();
 	
 	// BOIDS
 	vector < Boid > boids;  // the list of boids!

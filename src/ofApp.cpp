@@ -8,10 +8,10 @@ void ofApp::setup(){
 	ofSetVerticalSync(true);
 	
 	// set variables!
-	drag = 0.95f;
+	drag = 0.97f;
 	attraction = 0.7;
-	allign = 0.45;
-	separation = 0.85;
+	allign = 0.5;
+	separation = 0.93;
 	
 	createBoids();
 	randomizeBoids();
@@ -23,8 +23,8 @@ void ofApp::setup(){
 	
 	// setup mouse interaction
 	bMouseDown = false;
-	mouseRadius = 50;
-	mouseForce	=	1;
+	mouseRadius = 100;
+	mouseForce	=	2;
 	
 	// setup buttons
 	buttons.setup();
@@ -54,7 +54,16 @@ void ofApp::update(){
 void ofApp::draw(){
 	drawBoids();
 	
+	drawNiceGuy();
 	
+	if(buttons.visible){
+		ofSetColor(0);
+		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::drawNiceGuy(){
 	// draw a face around the mouse if it's down
 	ofNoFill();
 	ofPushMatrix();
@@ -66,10 +75,18 @@ void ofApp::draw(){
 	}
 	ofScale( mouseRadius/8, mouseRadius/8);
 	ofDrawLine(0, 0, 0, -4); // nose
-	ofDrawLine(-5, -5, -3, -4); // left eye
-	ofDrawLine(5, -5, 3, -4); // right eye
-	ofDrawLine(-3, 2, 3, 2); // mouth
-	
+	if(bMouseDown){ // not so nice
+		ofDrawLine(-4, -5, -2, -4); // left eye
+		ofDrawLine(4, -5, 2, -4); // right eye
+		ofDrawLine(-4, 2, 4, 2); // mouth
+	}else{ // nice
+		ofDrawLine(-4, -2, -3, -3); // left eye
+		ofDrawLine(-3, -3, -2, -2);
+		ofDrawLine(4, -2, 3, -3); // right eye
+		ofDrawLine(3, -3, 2, -2);
+		ofDrawLine(-5, 1, 0, 2); // mouth
+		ofDrawLine( 0, 2, 5, 1); // mouth
+	}
 	ofBeginShape();
 	// going around
 	ofVertex( 0, -8);	// top
@@ -84,12 +101,6 @@ void ofApp::draw(){
 	
 	ofEndShape();
 	ofPopMatrix();
-	
-	
-	if(buttons.visible){
-		ofSetColor(0);
-		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
-	}
 }
 
 #pragma mark - BOIDS
@@ -140,6 +151,13 @@ void ofApp::flockBoids(){
 	
 	for(int i = 0; i <boids.size();i++){
 		for (int j = i+1; j < boids.size(); j++) {
+			// optimize a little
+			if(ABS(boids[i].pos.x - boids[j].pos.x) > zoneRadius ||
+			   ABS(boids[i].pos.y - boids[j].pos.y) > zoneRadius
+			   ){
+				continue;
+			}
+			
 			dir = boids[j].pos - boids[i].pos;
 			dist = dir.length();
 			
@@ -167,15 +185,16 @@ void ofApp::flockBoids(){
 				}
 			}
 			
-			// avoid mouse if necessary
-			if(bMouseDown){
-				dir = boids[i].pos - mousePos;
-				dist = dir.length();
-				if(dist < mouseRadius){
-					boids[i].acc += dir.normalize() * (mouseRadius - dist)/mouseRadius * mouseForce;
-				}
-			}
 			
+			
+		}
+		// avoid mouse if necessary
+		if(bMouseDown){
+			dir = boids[i].pos - mousePos;
+			dist = dir.length();
+			if(dist < mouseRadius){
+				boids[i].acc += dir.normalize() * (mouseRadius - dist)/mouseRadius * mouseForce;
+			}
 		}
 	}
 	

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "53F022D2BF9B41F13FA1931660204F4C6C9BABC4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "957B2B8513E857A03FBDB72A23B1F36E5E6B9408" : 0,
+    "53F022D2BF9B41F13FA1931660204F4C6C9BABC4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0688E00F-7D3B-4714-B1C9-E11F7AA160F5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "957B2B8513E857A03FBDB72A23B1F36E5E6B9408" : "..\/..\/addons\/ofxButtons",
+    "53F022D2BF9B41F13FA1931660204F4C6C9BABC4" : "Boids\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BoidsExample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BoidsExample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/timknapen\/BoidsVSNiceGuy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "53F022D2BF9B41F13FA1931660204F4C6C9BABC4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/timknapen\/ofxButtons.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "957B2B8513E857A03FBDB72A23B1F36E5E6B9408"
+    }
+  ]
+}
