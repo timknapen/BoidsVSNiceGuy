@@ -1,4 +1,4 @@
-# BoidsVSNiceGuy
+# Boids VS Nice Guy
 
 A very long OpenFrameworks introduction workshop for Digital Craft
 
