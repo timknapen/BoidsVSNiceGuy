@@ -55,6 +55,9 @@ void Boid::draw(){
 //----------------------------------------------------
 void Boid::update(float drag){
 
+	// add a tiny little bit of noise to the motion
+	vel += ofPoint( vel.x * ofRandom(-0.1, 0.1), vel.y * ofRandom(-0.1, 0.1));
+	
 	// add the acceleration to the velocity
 	vel += acc;
 
@@ -63,12 +66,7 @@ void Boid::update(float drag){
 		vel.normalize();
 		vel *= maxSpeed;
 	}
-	// speed needs to be at least 1
-	/*
-	if( vel.length() < 1){
-		vel.normalize();
-	}
-	*/
+
 	// drag adds "resistance"
 	vel *= drag;
 
@@ -87,21 +85,25 @@ void Boid::update(float drag){
 
 //----------------------------------------------------
 void Boid::keepInBounds(float minX, float minY, float maxX, float maxY){
+	bool jump = false;
 	if(pos.x < minX ){
-		pos.x = minX;
-		vel.x = -vel.x;		// bounce on X axis
+		pos.x = maxX;
+		jump = true;
 	}
 	if(pos.x > maxX){
-		pos.x = maxX;
-		vel.x = -vel.x;		// bounce on X axis
+		pos.x = minX;
+		jump = true;
 	}
 	if(pos.y < minY){
-		pos.y = minY;
-		vel.y = -vel.y;		// bounce on Y axis
+		pos.y = maxY;
+		jump = true;
 	}
 	if(pos.y > maxY){
-		pos.y = maxY;
-		vel.y = -vel.y;		// bounce on Y axis
+		pos.y = minY;
+		jump = true;
+	}
+	if(jump){
+		setPos(pos.x, pos.y);
 	}
 }
 

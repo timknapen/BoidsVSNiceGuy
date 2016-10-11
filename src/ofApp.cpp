@@ -54,7 +54,7 @@ void ofApp::draw(){
 #pragma mark - BOIDS
 //--------------------------------------------------------------
 void ofApp::createBoids(){
-	int numBoids = 500;
+	int numBoids = 200;
 	for(int i = 0; i < numBoids; i++){
 		Boid b;
 		boids.push_back(b);
@@ -72,8 +72,9 @@ void ofApp::randomizeBoids(){
 
 //--------------------------------------------------------------
 void ofApp::drawBoids(){
+	ofEnableAlphaBlending();
 	ofNoFill();
-	ofSetColor(0);
+	ofSetColor(0, 200);
 	for(int i =0; i< boids.size(); i++){
 		boids[i].draw();
 	}
