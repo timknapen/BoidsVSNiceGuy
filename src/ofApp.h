@@ -44,7 +44,7 @@ public:
 	float zoneRadius, lowThresh, highThresh;
 	
 	// the mouse
-	bool	bMouseDown;
+	int		mouseButton; // attract or repel depending on the mousebutton
 	ofPoint	mousePos;
 	float	mouseRadius;
 	float	mouseForce;

@@ -22,7 +22,7 @@ void ofApp::setup(){
 	highThresh =	0.95f;
 	
 	// setup mouse interaction
-	bMouseDown = false;
+	mouseButton = -1;
 	mouseRadius = 100;
 	mouseForce	=	2;
 	
@@ -52,10 +52,8 @@ void ofApp::update(){
 #pragma mark - DRAW
 //--------------------------------------------------------------
 void ofApp::draw(){
-	drawBoids();
-	
 	drawNiceGuy();
-	
+	drawBoids();
 	if(buttons.visible){
 		ofSetColor(0);
 		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
@@ -68,24 +66,27 @@ void ofApp::drawNiceGuy(){
 	ofNoFill();
 	ofPushMatrix();
 	ofTranslate(mousePos);
-	if(bMouseDown){
+	if(mouseButton == OF_MOUSE_BUTTON_1){ // REPEL
 		ofSetColor(255, 0, 0);
-	}else{
+	}else if(mouseButton == OF_MOUSE_BUTTON_3 ){ // ATTRACT
 		ofSetColor(0, 255, 0);
 	}
 	ofScale( mouseRadius/8, mouseRadius/8);
-	ofDrawLine(0, 0, 0, -4); // nose
-	if(bMouseDown){ // not so nice
+	if(mouseButton == OF_MOUSE_BUTTON_1){ // not so nice // REPEL
 		ofDrawLine(-4, -5, -2, -4); // left eye
 		ofDrawLine(4, -5, 2, -4); // right eye
 		ofDrawLine(-4, 2, 4, 2); // mouth
-	}else{ // nice
+		ofDrawLine(0, 0, 0, -4); // nose
+
+	}else if( mouseButton == OF_MOUSE_BUTTON_3){ // nice // ATTRACT
 		ofDrawLine(-4, -2, -3, -3); // left eye
 		ofDrawLine(-3, -3, -2, -2);
 		ofDrawLine(4, -2, 3, -3); // right eye
 		ofDrawLine(3, -3, 2, -2);
 		ofDrawLine(-5, 1, 0, 2); // mouth
 		ofDrawLine( 0, 2, 5, 1); // mouth
+		ofDrawLine(0, 0, 0, -4); // nose
+
 	}
 	ofBeginShape();
 	// going around
@@ -126,7 +127,7 @@ void ofApp::randomizeBoids(){
 void ofApp::drawBoids(){
 	ofEnableAlphaBlending();
 	ofNoFill();
-	ofSetColor(0, 200);
+	ofSetColor(0, 100);
 	for(int i =0; i< boids.size(); i++){
 		boids[i].draw();
 	}
@@ -188,14 +189,21 @@ void ofApp::flockBoids(){
 			
 			
 		}
-		// avoid mouse if necessary
-		if(bMouseDown){
+		
+		if(mouseButton == OF_MOUSE_BUTTON_1){ // Repel to mouse
 			dir = boids[i].pos - mousePos;
 			dist = dir.length();
 			if(dist < mouseRadius){
 				boids[i].acc += dir.normalize() * (mouseRadius - dist)/mouseRadius * mouseForce;
 			}
+		}else if(mouseButton == OF_MOUSE_BUTTON_3){ // Attract to mouse
+			dir = boids[i].pos - mousePos;
+			dist = dir.length();
+			if(dist < mouseRadius){
+				boids[i].acc -= dir.normalize() * 0.1 * (mouseRadius - dist)/mouseRadius * mouseForce;
+			}
 		}
+		
 	}
 	
 }
@@ -231,14 +239,14 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-	bMouseDown = true;
+	mouseButton = button;
 	mousePos.set(x, y);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-	bMouseDown = false;
+	mouseButton = -1;
 	mousePos.set(x, y);
 }
 
