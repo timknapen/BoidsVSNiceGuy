@@ -18,7 +18,8 @@ public:// All attributes and functions here can be called by other classes
 	
 	void draw();				// draw the Boid to screen
 	void update(float drag);	// update position, speed, etc.
-	void keepInBounds(float minX, float minY, float maxX, float maxY);
+	void keepInBounds(float minX, float minY, float maxX, float maxY); // two variations of staying withing bounds
+	void bounceOffBounds(float minX, float minY, float maxX, float maxY);
 	void setPos(float x, float y);
 	
 	ofPoint pos;	// my position vector

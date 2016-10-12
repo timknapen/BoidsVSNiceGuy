@@ -46,10 +46,7 @@ void Boid::draw(){
 	ofVertex(0, 0);
 	ofVertex(-10, 3);
 	ofEndShape();
-	
 	ofPopMatrix();
-	
-	
 }
 
 //----------------------------------------------------
@@ -104,6 +101,26 @@ void Boid::keepInBounds(float minX, float minY, float maxX, float maxY){
 	}
 	if(jump){
 		setPos(pos.x, pos.y);
+	}
+}
+
+//----------------------------------------------------
+void Boid::bounceOffBounds(float minX, float minY, float maxX, float maxY){
+	if(pos.x < minX ){
+		pos.x = minX;
+		vel.x = -vel.x;		// bounce on X axis
+	}
+	if(pos.x > maxX){
+		pos.x = maxX;
+		vel.x = -vel.x;		// bounce on X axis
+	}
+	if(pos.y < minY){
+		pos.y = minY;
+		vel.y = -vel.y;		// bounce on Y axis
+	}
+	if(pos.y > maxY){
+		pos.y = maxY;
+		vel.y = -vel.y;		// bounce on Y axis
 	}
 }
 

@@ -31,21 +31,24 @@ public:
 	float attraction;		// amount of attraction force between boids
 	float allign;			// amount of allign force between boids
 	float separation;		// amount of separation force between boids (avoidance)
-	
+	bool bDoFlocking;		// be able to switch off flocking interaction
+
 	// BOID functions
 	void createBoids();		// create the boids
 	void randomizeBoids();	// set boids to random new positions
 	void drawBoids();		// draw all boids
 	void updateBoids();		// update the boids positions!
 	void flockBoids();		// do flocking
+	void mouseInteraction();// avoid or attract mouse
 	
 	// GUI!
 	ButtonManager buttons;
 	float zoneRadius, lowThresh, highThresh;
 	
 	// the mouse
-	int		mouseButton; // attract or repel depending on the mousebutton
+	int		mouseBehaviour; // 0  = nothing, 1 = attract, 2 = repel
 	ofPoint	mousePos;
 	float	mouseRadius;
 	float	mouseForce;
+	bool	bDrawMouse;
 };
