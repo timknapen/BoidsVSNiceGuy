@@ -35,6 +35,9 @@ void Boid::draw(){
 	for(int i = 0; i < tail.size()-1; i++){
 		ofDrawLine(tail[i].x, tail[i].y, tail[i+1].x, tail[i+1].y);
 	}
+	if(tail.size() > 0){
+		ofDrawLine(tail[tail.size()-1], pos);
+	}
 	
 	ofPushMatrix();
 	ofTranslate(pos.x, pos.y, 0);
@@ -74,10 +77,12 @@ void Boid::update(float drag){
 	acc.set( 0, 0 );
 	
 	// update the tail
-	for(int i = 0; i < tail.size()-1; i++){
-		tail[i] = tail[i+1];
-	}
-	tail[tail.size()-1] = pos;
+	//if((tail[tail.size()-1] - pos).length() > 2){
+		for(int i = 0; i < tail.size()-1; i++){
+			tail[i] = tail[i+1];
+		}
+		tail[tail.size()-1] = pos;
+	//}
 }
 
 //----------------------------------------------------

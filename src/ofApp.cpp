@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	// set background
-	ofBackground(255);
+	ofBackground(220);
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	
@@ -27,6 +27,7 @@ void ofApp::setup(){
 	mouseRadius = 100;
 	mouseForce	=	2;
 	bDrawMouse	= true;
+	mousePos.set(ofGetWidth()/2, ofGetHeight()/2);
 	
 	// setup buttons
 	buttons.setup();
@@ -60,8 +61,9 @@ void ofApp::update(){
 #pragma mark - DRAW
 //--------------------------------------------------------------
 void ofApp::draw(){
-	drawNiceGuy();
 	drawBoids();
+	drawNiceGuy();
+
 	if(buttons.visible){
 		ofSetColor(0);
 		ofDrawBitmapString("FPS: "+ ofToString(ofGetFrameRate()), 10, ofGetHeight() - 15 );
@@ -77,6 +79,23 @@ void ofApp::drawNiceGuy(){
 	ofNoFill();
 	ofPushMatrix();
 	ofTranslate(mousePos);
+	ofScale( mouseRadius/8, mouseRadius/8);
+
+	ofFill();
+	ofSetColor(255, 255, 255, 150);
+	ofBeginShape();
+	// going around
+	ofVertex( 0, -8);	// top
+	ofVertex( 6, -6);	// right top
+	ofVertex( 8, 0);	// right
+	ofVertex( 6, 6);	// right bottom
+	ofVertex( 0, 8);	// bottom
+	ofVertex(-6, 6);	// bottom left
+	ofVertex( -8, 0);	// left
+	ofVertex(-6, -6);	// left top
+	ofVertex( 0, -8);	// top
+	ofEndShape();
+	ofNoFill();
 	if(mouseBehaviour == 2){ // REPEL
 		ofSetColor(255, 0, 0);
 	}else if(mouseBehaviour == 1 ){ // ATTRACT
@@ -84,7 +103,18 @@ void ofApp::drawNiceGuy(){
 	}else{
 		ofSetColor(0, 0, 0, 50); // nothing
 	}
-	ofScale( mouseRadius/8, mouseRadius/8);
+	ofBeginShape();
+	// going around
+	ofVertex( 0, -8);	// top
+	ofVertex( 6, -6);	// right top
+	ofVertex( 8, 0);	// right
+	ofVertex( 6, 6);	// right bottom
+	ofVertex( 0, 8);	// bottom
+	ofVertex(-6, 6);	// bottom left
+	ofVertex( -8, 0);	// left
+	ofVertex(-6, -6);	// left top
+	ofVertex( 0, -8);	// top
+	ofEndShape();
 	if(mouseBehaviour == 2){ // not so nice // REPEL
 		ofDrawLine(-4, -5, -2, -4); // left eye
 		ofDrawLine(4, -5, 2, -4); // right eye
@@ -101,18 +131,7 @@ void ofApp::drawNiceGuy(){
 		ofDrawLine(0, 0, 0, -4); // nose
 	 
 	}
-	ofBeginShape();
-	// going around
-	ofVertex( 0, -8);	// top
-	ofVertex( 6, -6);	// right top
-	ofVertex( 8, 0);	// right
-	ofVertex( 6, 6);	// right bottom
-	ofVertex( 0, 8);	// bottom
-	ofVertex(-6, 6);	// bottom left
-	ofVertex( -8, 0);	// left
-	ofVertex(-6, -6);	// left top
-	ofVertex( 0, -8);	// top
-	ofEndShape();
+	
 	
 	ofPopMatrix();
 }
@@ -120,7 +139,7 @@ void ofApp::drawNiceGuy(){
 #pragma mark - BOIDS
 //--------------------------------------------------------------
 void ofApp::createBoids(){
-	int numBoids = 225;
+	int numBoids = 500;
 	for(int i = 0; i < numBoids; i++){
 		Boid b;
 		boids.push_back(b);
@@ -129,8 +148,8 @@ void ofApp::createBoids(){
 
 //--------------------------------------------------------------
 void ofApp::randomizeBoids(){
-	float nrows = 15;
-	float ncols = 15;
+	float nrows, ncols;
+	nrows = ncols = sqrt(boids.size());
 	for(int i =0; i< boids.size(); i++){
 		// grid
 		int x = i % (int)nrows;
@@ -158,7 +177,9 @@ void ofApp::updateBoids(){
 		// update the position and speed
 		boids[i].update(drag);
 		// keep boid inside the screen!
-		boids[i].bounceOffBounds(0, 0, ofGetWidth(), ofGetHeight());
+		//boids[i].bounceOffBounds(0, 0, ofGetWidth(), ofGetHeight());
+		boids[i].keepInBounds(0, 0, ofGetWidth(), ofGetHeight());
+
 	}
 }
 
